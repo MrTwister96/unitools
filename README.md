@@ -13,7 +13,7 @@ pip install unitools
 
 ## Modules
 
-`unitools` comprises multiple modules, each designed for a specific purpose. Below is a description of the `ICMPv4` module.
+`unitools` offers multiple modules, each tailored for a specific purpose. Below is a description of a few key modules:
 
 ### ICMPv4 Module
 
@@ -45,6 +45,40 @@ print(response)
 #### ICMPv4.Response
 
 An inner class, `Response`, embodies the ICMP reply, furnishing details like the responder's IP address, byte size of the packet, round-trip time, and TTL (Time-to-Live).
+
+### TCPv4 Module
+
+The `TCPv4` module provides tools to check the reachability of TCP ports. It offers a "ping" on a TCP port and an extended ping functionality with multiple packets, delivering insights about the responsiveness and reliability of a TCP service.
+
+#### Features
+- **TCP Ping**: Test if a specific port on a host is reachable.
+- **Extended TCP Ping**: Transmit multiple packets to ascertain the consistency and average response time.
+- **Response Parsing**: Parse and present the ping responses in a structured manner.
+
+#### Usage
+```python
+from unitools.TCPv4 import Request
+
+# Initialize with target host and port
+request = Request(host='example.com', port=80)
+
+# Single TCP Ping
+response = request.tcp_ping()
+print(response)
+
+# Extended TCP Ping with 5 packets
+responses = request.tcp_ping_extended(ping_count=5)
+print(responses)
+```
+
+#### Methods
+
+-   **tcp_ping**: Send a TCP request to the provided host and port and await its response.
+-   **tcp_ping_extended**: Transmits multiple TCP pings and collates the responses.
+
+#### TCPv4.Response & TCPv4.Responses
+
+`Response` captures the outcome of a single TCP ping, detailing if the port was reachable and the latency. `Responses`, on the other hand, aggregates results from the extended ping, offering insights like average latency and packet loss percentage.
 
 ## Contribute
 
