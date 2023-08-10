@@ -149,7 +149,7 @@ class Request:
                 str: A formatted string representing the ICMP response.
             """
             if self.is_reachable():
-                return f"Reply from {self.address}: bytes={self.bytes} time={self.latency}ms TTL={self.ttl}."
+                return f"Reply from {self.address}: bytes={self.bytes} time={self.latency}ms TTL={self.ttl}"
             else:
                 return "Request timed out."
 
