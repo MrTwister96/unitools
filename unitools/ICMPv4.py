@@ -46,11 +46,7 @@ class Request:
 
                 if ready[0]:
                     rec_packet, addr = ip_socket.recvfrom(1024)
-                    if self.os_name == "windows":
-                        icmp_header = rec_packet[20:28]
-                    else:  # Linux
-                        icmp_header = rec_packet[0:8]
-
+                    icmp_header = rec_packet[20:28]
                     
                     icmp_type, _, _, _, _ = struct.unpack("bbHHh", icmp_header)
 
