@@ -39,7 +39,7 @@ class Request:
             ICMPResponse: An object containing details of the ICMP response or None if there's no response.
         """
         ip_socket = self.create_socket()
-        start_time = time.time()
+        start_time = time.time() # Seems to be the same for linux and windows...Wierd
         if self.send_on_socket(ip_socket):
             while True:
                 ready = select.select([ip_socket], [], [], self.timeout)
